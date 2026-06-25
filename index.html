@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart UTM & Social Link Manager</title>
+  <!-- Tailwind CSS CDN for modern luxury styling -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter & Prompt Fonts for Thai and English readability -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +23,7 @@
   <div id="redirect-screen" class="fixed inset-0 bg-slate-950 text-white flex flex-col items-center justify-center p-6 z-[100] hidden">
     <div class="max-w-md w-full bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-2xl text-center space-y-6">
       
+      <!-- Premium Loading Pulse Rings -->
       <div class="flex justify-center">
         <div class="relative w-20 h-20">
           <div class="absolute inset-0 rounded-full border-4 border-emerald-500/20"></div>
@@ -38,6 +41,7 @@
         <p id="redirect-countdown" class="text-sm text-slate-400">ระบบจะนำทางคุณไปในอีก 2 วินาที...</p>
       </div>
 
+      <!-- Destination Card for Phishing Protection -->
       <div class="p-4 bg-slate-950/80 border border-slate-800 rounded-2xl text-left space-y-1">
         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">ลิงก์ปลายทางที่ปลอดภัย</span>
         <a id="redirect-dest" href="#" target="_blank" class="text-xs font-mono text-emerald-400 hover:underline break-all block truncate">
@@ -45,6 +49,7 @@
         </a>
       </div>
 
+      <!-- Quick Action Controls -->
       <div class="pt-2 flex flex-col gap-2">
         <button id="redirect-now-btn" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-emerald-600/10">
           ไปยังเว็บไซต์ทันที
@@ -66,7 +71,7 @@
   </div>
 
   <!-- Sidebar Navigation Panel -->
-  <aside class="w-full md:w-64 bg-slate-900 text-slate-200 flex flex-col border-r border-slate-800">
+  <aside class="w-full md:w-64 bg-slate-900 text-slate-200 flex flex-col border-r border-slate-800 flex-shrink-0">
     <div class="p-6 border-b border-slate-800 flex items-center gap-3">
       <div class="bg-emerald-500 p-2 rounded-lg text-slate-950 font-bold">UTM</div>
       <div>
@@ -76,19 +81,18 @@
     </div>
 
     <nav class="p-4 flex-1 space-y-1">
-      <button onclick="switchTab('dashboard')" id="btn-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition bg-emerald-600 text-white">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" /></svg>
-        แดชบอร์ดภาพรวม
-      </button>
-      <button onclick="switchTab('utm-builder')" id="btn-utm-builder" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition hover:bg-slate-800 text-slate-300">
+      <button onclick="switchTab('utm-builder')" id="btn-utm-builder" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition bg-emerald-600 text-white">
+        <!-- Link Icon -->
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
         เครื่องมือสร้าง UTM
       </button>
       <button onclick="switchTab('history')" id="btn-history" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition hover:bg-slate-800 text-slate-300">
+        <!-- History Icon -->
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         คลังลิงก์ทั้งหมด (<span id="sidebar-count">0</span>)
       </button>
       <button onclick="switchTab('settings')" id="btn-settings" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition hover:bg-slate-800 text-slate-300">
+        <!-- Settings Icon -->
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         ตั้งค่าเชื่อมต่อ Bitly API
       </button>
@@ -123,76 +127,29 @@
     </div>
   </aside>
 
+  <!-- Main Content Space -->
   <main class="flex-1 p-6 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full">
 
-    <section id="tab-dashboard" class="space-y-6">
-      <div class="flex justify-between items-center flex-wrap gap-4">
-        <div>
-          <h2 class="text-2xl font-bold text-slate-900">แผงควบคุมสถิติ & แดชบอร์ดภาพรวม</h2>
-          <p class="text-slate-500 text-sm">ตรวจสอบประสิทธิภาพของลิงก์ย่อ UTM และจำนวนการเข้าชมผ่านช่องทางโซเชียลมีเดียต่างๆ</p>
-        </div>
-        <button onclick="exportToCSV()" class="bg-white hover:bg-slate-100 text-slate-700 font-medium py-2 px-4 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2 text-sm transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-          ดาวน์โหลดรายงานลิงก์ (.CSV)
+    <!-- ================= UTM BUILDER TAB (Default View) ================= -->
+    <section id="tab-utm-builder" class="space-y-6">
+      <!-- Feature Sub-navigation Tab Selector -->
+      <div class="flex justify-center md:justify-start gap-2 border-b border-slate-200 pb-1">
+        <button onclick="switchBuilderSubTab('bulk-utm-pane')" id="btn-sub-bulk-utm" class="px-4 py-2 text-sm font-semibold border-b-2 border-emerald-600 text-emerald-700 transition">
+          สร้าง UTM หลายช่องทาง (Bulk Multi-Channel)
+        </button>
+        <button onclick="switchTabToBulkShortener()" id="btn-sub-bulk-short" class="px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300 text-sm font-medium transition">
+          ย่อลิงก์ทั่วไปแบบกลุ่ม (Bulk URL Shortener)
         </button>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
-          <div class="text-xs font-semibold text-slate-400 uppercase">ลิงก์ UTM ทั้งหมด</div>
-          <div id="stat-total-links" class="text-3xl font-extrabold text-slate-950 mt-1">0 ลิงก์</div>
-          <div class="text-xs text-slate-500 mt-2">กระจายครบถ้วนทุกแคมเปญ</div>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
-          <div class="text-xs font-semibold text-slate-400 uppercase">ยอดผู้เข้าชมรวม</div>
-          <div id="stat-total-clicks" class="text-3xl font-extrabold text-emerald-600 mt-1">0 ครั้ง</div>
-          <div class="text-xs text-slate-500 mt-2">ยอดสะสมการคลิกจากแผนงานจริงและจำลอง</div>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
-          <div class="text-xs font-semibold text-slate-400 uppercase">ช่องทางที่ผลงานดีสุด</div>
-          <div id="stat-best-platform" class="text-3xl font-extrabold text-slate-950 mt-1">-</div>
-          <div id="stat-active-platforms" class="text-xs text-slate-500 mt-2">วัดผลจากแพลตฟอร์มที่เปิดใช้งาน 0 ช่องทาง</div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 lg:col-span-2">
-          <h3 class="text-base font-bold text-slate-900 mb-4">ประสิทธิภาพการคลิกแยกตามช่องทางโซเชียล</h3>
-          <div id="platform-progress-bars" class="space-y-4">
-            </div>
-        </div>
-
-        <div class="bg-emerald-900 text-emerald-50 p-6 rounded-2xl shadow-lg flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-bold text-white mb-2">บริการย่อลิงก์ฟรีระบบอัตโนมัติ</h3>
-            <p class="text-emerald-200 text-sm leading-relaxed text-justify">
-              ตัวแอปพลิเคชันรองรับการแปลงลิงก์ UTM และจัดรูปแบบเป็นลิงก์สั้นแบบ **Self-Hosted Engine** โดยรันทุกอย่างในโดเมนหลักส่วนตัวของคุณทันที ปลอดภัย รวดเร็ว และเป็นระบบพึ่งพาตนเองที่ยอดเยี่ยมที่สุดครับ!
-            </p>
-          </div>
-          <div class="mt-6">
-            <button onclick="switchTab('utm-builder')" class="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs">
-              ลองใช้เครื่องมือสร้าง UTM
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tab-utm-builder" class="space-y-6 hidden">
-      <div>
-        <h2 class="text-2xl font-bold text-slate-900 text-center md:text-left">เครื่องมือสร้างลิงก์ UTM แบบกลุ่ม & ย่อลิงก์</h2>
-        <p class="text-slate-500 text-sm text-center md:text-left">กรอกข้อมูลแคมเปญเพียงครั้งเดียว แล้วระบบจะแจกจ่ายลิงก์ UTM และลิงก์สั้นสำหรับส่งลงทุกช่องทางโซเชียลมีเดียพร้อมกัน</p>
-      </div>
-
+      <!-- Loading Spinner for API -->
       <div id="generating-spinner" class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3 text-emerald-800 text-sm font-semibold animate-pulse max-w-3xl mx-auto hidden">
         <span class="w-4 h-4 border-2 border-emerald-800 border-t-transparent rounded-full animate-spin"></span>
-        <span>ระบบกำลังจัดทำลิงก์ UTM และสร้างลิงก์สั้นความเร็วสูง กรุณารอสักครู่...</span>
+        <span>ระบบกำลังจัดทำลิงก์และสร้างลิงก์สั้นความเร็วสูง กรุณารอสักครู่...</span>
       </div>
 
-      <div class="max-w-3xl mx-auto">
+      <!-- Pane 1: Bulk UTM Multi-Channel Panel -->
+      <div id="bulk-utm-pane" class="max-w-3xl mx-auto">
         <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
           <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
             <h3 class="text-base font-bold text-slate-900">เครื่องมือสร้างแบบกลุ่มด่วน (Bulk Multi-Channel)</h3>
@@ -200,13 +157,15 @@
           </div>
 
           <form id="bulk-utm-form" onsubmit="handleBulkSubmit(event)" class="space-y-6">
+            <!-- Base URL Textarea Field -->
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">
-                URL เว็บไซต์ปลายทางหลัก (Website URL) <span class="text-red-500">*</span>
+                URL เว็บไซต์ปลายทางหลัก (Website URLs) <span class="text-red-500">* (สามารถใส่ได้หลายลิงก์ บรรทัดละ 1 ลิงก์)</span>
               </label>
-              <input type="url" id="bulk-baseUrl" placeholder="เช่น https://example.com/your-product" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" required>
+              <textarea id="bulk-baseUrls" rows="4" placeholder="https://example.com/product-1&#10;https://example.com/product-2" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent" required></textarea>
             </div>
 
+            <!-- Name and Medium Fields -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">Campaign Name (ชื่อแคมเปญหลัก)</label>
@@ -218,6 +177,7 @@
               </div>
             </div>
 
+            <!-- Term and Content Fields -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">Campaign Term (คีย์เวิร์ด)</label>
@@ -229,12 +189,15 @@
               </div>
             </div>
 
+            <!-- Platform checklist panel -->
             <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
               <label class="block text-xs font-bold text-slate-600 mb-3 uppercase tracking-wide">เลือกแพลตฟอร์มที่ต้องการสร้าง UTM แบบกลุ่ม:</label>
               <div id="platforms-container" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                </div>
+                <!-- Checklist dynamic output -->
+              </div>
             </div>
 
+            <!-- Submit Button -->
             <button type="submit" id="submit-bulk-btn" class="w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 10.742l4.74-2.37m0 5.253l-4.74-2.37M21 12a3 3 0 11-6 0 3 3 0 016 0zm-6-8a3 3 0 11-6 0 3 3 0 016 0zm-6 16a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               <span>สร้างแบบกลุ่มและย่อลิงก์จริง (Bulk Generate)</span>
@@ -243,6 +206,37 @@
         </div>
       </div>
 
+      <!-- Pane 2: Bulk URL Shortener Panel -->
+      <div id="bulk-shorten-pane" class="max-w-3xl mx-auto hidden">
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
+            <h3 class="text-base font-bold text-slate-900">ย่อลิงก์ยาวทั่วไปแบบกลุ่ม (Bulk URL Shortener)</h3>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">Bitly / Self-Hosted</span>
+          </div>
+
+          <form id="bulk-shorten-form" onsubmit="handleBulkShortenSubmit(event)" class="space-y-6">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">
+                วาง URL ยาวที่ต้องการย่อ (บรรทัดละ 1 ลิงก์) <span class="text-red-500">*</span>
+              </label>
+              <textarea id="bulk-shorten-urls" rows="8" placeholder="https://example.com/page-1&#10;https://example.com/page-2&#10;https://example.com/page-3" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500" required></textarea>
+              <p class="text-xs text-slate-400 mt-2">
+                * ใส่ได้หลายลิงก์ตามต้องการ ระบบจะสแกนและเปลี่ยนเป็นลิงก์สั้นให้ทันที (จะใช้ Bitly API อัตโนมัติหากเชื่อมต่ออยู่)
+              </p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-bulk-shorten-btn" class="w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+              <span>ย่อลิงก์แบบกลุ่มทั้งหมด (Bulk Shorten)</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quick documentation references -->
       <div class="bg-slate-100 p-5 rounded-2xl border border-slate-200 max-w-3xl mx-auto">
         <h4 class="text-xs font-bold text-slate-500 uppercase mb-3 text-center md:text-left">คำอธิบายโครงสร้าง UTM ของ Google (ย่อความสั้นๆ)</h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 text-xs text-slate-600 leading-relaxed">
@@ -270,11 +264,12 @@
       </div>
     </section>
 
+    <!-- ================= HISTORY TAB ================= -->
     <section id="tab-history" class="space-y-6 hidden">
       <div class="flex justify-between items-center flex-wrap gap-4">
         <div>
           <h2 class="text-2xl font-bold text-slate-900">คลังเก็บลิงก์ทั้งหมดที่เคยสร้าง</h2>
-          <p class="text-slate-500 text-sm">ตรวจสอบความถูกต้อง นำลิงก์ UTM และลิงก์สั้นเดิมกลับมาใช้ใหม่ หรือตรวจวิเคราะห์จำนวนการคลิก</p>
+          <p class="text-slate-500 text-sm">ตรวจสอบความถูกต้อง นำลิงก์ UTM และลิงก์สั้นเดิมกลับมาใช้ใหม่ หรือส่งออกไฟล์ประวัติการทำงาน</p>
         </div>
         <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm flex items-center gap-2 text-sm transition">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -291,24 +286,30 @@
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
+          <table class="w-full text-left border-collapse min-w-[1200px]">
             <thead>
               <tr class="border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase bg-slate-50/70">
                 <th class="py-3 px-4">วันที่สร้าง</th>
                 <th class="py-3 px-4">ช่องทาง</th>
+                <th class="py-3 px-4">Campaign Name</th>
+                <th class="py-3 px-4">Campaign Medium</th>
+                <th class="py-3 px-4">Campaign Term</th>
+                <th class="py-3 px-4">Campaign Content</th>
                 <th class="py-3 px-4">ลิงก์ดั้งเดิม & ลิงก์สั้น</th>
                 <th class="py-3 px-4">ลิงก์ UTM เต็ม</th>
-                <th class="py-3 px-4 text-center">คลิก (จำลอง)</th>
+                <th class="py-3 px-4 text-center">คลิก (จำลอง/จริง)</th>
                 <th class="py-3 px-4 text-center">จัดการ</th>
               </tr>
             </thead>
             <tbody id="history-table-rows" class="divide-y divide-slate-100 text-sm">
-              </tbody>
+              <!-- Injected dynamically -->
+            </tbody>
           </table>
         </div>
       </div>
     </section>
 
+    <!-- ================= SETTINGS TAB ================= -->
     <section id="tab-settings" class="space-y-6 hidden">
       <div>
         <h2 class="text-2xl font-bold text-slate-900">ตั้งค่าระบบ & เชื่อมต่อ API ลิงก์ย่อภายนอก (ทางเลือกเพิ่มเติม)</h2>
@@ -350,6 +351,7 @@
 
   </main>
 
+  <!-- State & Functionality JavaScript -->
   <script>
     // Platform Configurations
     const PLATFORMS = {
@@ -358,62 +360,32 @@
       line: { name: 'LINE', source: 'line', medium: 'messenger', color: 'bg-green-500', textColor: 'text-green-600' },
       instagram: { name: 'Instagram', source: 'instagram', medium: 'social_bio', color: 'bg-pink-600', textColor: 'text-pink-600' },
       twitter: { name: 'X', source: 'twitter', medium: 'social', color: 'bg-gray-800', textColor: 'text-gray-800' },
-      google: { name: 'Google', source: 'google', medium: 'cpc', color: 'bg-red-500', textColor: 'text-red-600' }
+      google: { name: 'Google', source: 'google', medium: 'cpc', color: 'bg-red-500', textColor: 'text-red-600' },
+      general: { name: 'ลิงก์ทั่วไป', source: 'general', medium: 'general', color: 'bg-slate-500', textColor: 'text-slate-600' } // Fallback for simple shortening
     };
 
     // Default System Access Token Configs
     const DEFAULT_TOKEN = '8c005390f5a76f9bf30787f67e0579e6a70746eb';
 
     // App State Variables
-    let activeTab = 'dashboard';
+    let activeTab = 'utm-builder';
+    let activeBuilderSubTab = 'bulk-utm-pane';
     let links = [];
     let bitlyToken = DEFAULT_TOKEN; // Run automatically upon launch
 
-    // URL Compression & Decompression Engine (gzip + base64)
-    async function compressUrl(str) {
-      try {
-        const byteArray = new TextEncoder().encode(str);
-        const cs = new CompressionStream('gzip');
-        const writer = cs.writable.getWriter();
-        writer.write(byteArray);
-        writer.close();
-        const buffer = await new Response(cs.readable).arrayBuffer();
-        return btoa(String.fromCharCode(...new Uint8Array(buffer)))
-          .replace(/\+/g, '-')
-          .replace(/\//g, '_')
-          .replace(/=+$/, '');
-      } catch (e) {
-        return btoa(encodeURIComponent(str))
-          .replace(/\+/g, '-')
-          .replace(/\//g, '_')
-          .replace(/=+$/, '');
-      }
+    // URL Encoder & Decoder (Reliable & 100% CSP compliant fallback for base64)
+    function encodeUrlSafe(str) {
+      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+        return String.fromCharCode('0x' + p1);
+      })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     }
 
-    async function decompressUrl(compressed) {
-      try {
-        let base64 = compressed.replace(/-/g, '+').replace(/_/g, '/');
-        while (base64.length % 4) base64 += '=';
-        const binary = atob(base64);
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) {
-          bytes[i] = binary.charCodeAt(i);
-        }
-        const ds = new DecompressionStream('gzip');
-        const writer = ds.writable.getWriter();
-        writer.write(bytes);
-        writer.close();
-        const buffer = await new Response(ds.readable).arrayBuffer();
-        return new TextDecoder().decode(buffer);
-      } catch (e) {
-        try {
-          let base64 = compressed.replace(/-/g, '+').replace(/_/g, '/');
-          while (base64.length % 4) base64 += '=';
-          return decodeURIComponent(atob(base64));
-        } catch (err) {
-          return null;
-        }
-      }
+    function decodeUrlSafe(str) {
+      let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (base64.length % 4) base64 += '=';
+      return decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
     }
 
     // Initialize Application state on loading window
@@ -428,11 +400,25 @@
         const redirectScreen = document.getElementById('redirect-screen');
         redirectScreen.classList.remove('hidden');
 
-        decompressUrl(redirectCode).then(decodedUrl => {
+        try {
+          const decodedUrl = decodeUrlSafe(redirectCode);
           if (decodedUrl && (decodedUrl.startsWith('http://') || decodedUrl.startsWith('https://'))) {
             const redirectDest = document.getElementById('redirect-dest');
             redirectDest.innerText = decodedUrl;
             redirectDest.href = decodedUrl;
+
+            // TRACK CLICKS IN REDIRECT (Local Host Redirection Click Tracker)
+            const savedLinks = localStorage.getItem('utm_links');
+            if (savedLinks) {
+              let localLinks = JSON.parse(savedLinks);
+              const appBaseUrl = window.location.origin + window.location.pathname;
+              const fullShortUrl = appBaseUrl + '?r=' + redirectCode;
+              const matchedLink = localLinks.find(l => l.shortUrl === fullShortUrl);
+              if (matchedLink) {
+                matchedLink.clicks = (matchedLink.clicks || 0) + 1;
+                localStorage.setItem('utm_links', JSON.stringify(localLinks));
+              }
+            }
 
             let countdown = 2;
             const timer = setInterval(() => {
@@ -449,11 +435,11 @@
               window.location.replace(decodedUrl);
             };
           } else {
-            document.getElementById('redirect-title').innerText = 'ลิงก์ย่อเสียหายหรือข้อมูลไม่ถูกต้อง';
-            document.getElementById('redirect-countdown').innerText = 'ไม่สามารถแกะรหัสปลายทางของลิงก์นี้ได้';
-            document.getElementById('redirect-now-btn').classList.add('hidden');
+            showRedirectError();
           }
-        });
+        } catch(err) {
+          showRedirectError();
+        }
         return; 
       }
 
@@ -481,10 +467,15 @@
       }
 
       renderPlatformChecklists();
-      updateDashboardData();
       renderHistoryTable();
       updateSidebarCounter();
     };
+
+    function showRedirectError() {
+      document.getElementById('redirect-title').innerText = 'ลิงก์ย่อเสียหายหรือข้อมูลไม่ถูกต้อง';
+      document.getElementById('redirect-countdown').innerText = 'ไม่สามารถแกะรหัสปลายทางของลิงก์นี้ได้';
+      document.getElementById('redirect-now-btn').classList.add('hidden');
+    }
 
     function cancelRedirect() {
       const cleanUrl = window.location.origin + window.location.pathname;
@@ -494,7 +485,7 @@
     function switchTab(tabId) {
       activeTab = tabId;
 
-      ['dashboard', 'utm-builder', 'history', 'settings'].forEach(id => {
+      ['utm-builder', 'history', 'settings'].forEach(id => {
         const elem = document.getElementById(`tab-${id}`);
         const btn = document.getElementById(`btn-${id}`);
         if (id === tabId) {
@@ -506,11 +497,34 @@
         }
       });
 
-      if (tabId === 'dashboard') {
-        updateDashboardData();
-      } else if (tabId === 'history') {
+      if (tabId === 'history') {
         renderHistoryTable();
       }
+    }
+
+    // Switch between Sub-Panes inside UTM Builder tab
+    function switchBuilderSubTab(subTabId) {
+      activeBuilderSubTab = subTabId;
+      const utmPane = document.getElementById('bulk-utm-pane');
+      const shortenPane = document.getElementById('bulk-shorten-pane');
+      const utmBtn = document.getElementById('btn-sub-bulk-utm');
+      const shortenBtn = document.getElementById('btn-sub-bulk-short');
+
+      if (subTabId === 'bulk-utm-pane') {
+        utmPane.classList.remove('hidden');
+        shortenPane.classList.add('hidden');
+        utmBtn.className = "px-4 py-2 text-sm font-semibold border-b-2 border-emerald-600 text-emerald-700 transition";
+        shortenBtn.className = "px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300 text-sm font-medium transition";
+      } else {
+        utmPane.classList.add('hidden');
+        shortenPane.classList.remove('hidden');
+        utmBtn.className = "px-4 py-2 border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300 text-sm font-medium transition";
+        shortenBtn.className = "px-4 py-2 text-sm font-semibold border-b-2 border-emerald-600 text-emerald-700 transition";
+      }
+    }
+
+    function switchTabToBulkShortener() {
+      switchBuilderSubTab('bulk-shorten-pane');
     }
 
     function renderPlatformChecklists() {
@@ -518,6 +532,7 @@
       container.innerHTML = '';
 
       Object.entries(PLATFORMS).map(([key, config]) => {
+        if (key === 'general') return; // Skip general helper config
         const label = document.createElement('label');
         label.className = "flex items-center gap-2.5 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer text-xs font-semibold shadow-sm transition";
         label.innerHTML = `
@@ -552,7 +567,7 @@
         }
       }
 
-      const compressedData = await compressUrl(longUrl);
+      const compressedData = encodeUrlSafe(longUrl);
       const appBaseUrl = window.location.origin + window.location.pathname;
       return `${appBaseUrl}?r=${compressedData}`;
     }
@@ -585,20 +600,48 @@
       }
     }
 
+    // Helper to get parameters dynamically
+    function getUtmParam(urlStr, paramName) {
+      try {
+        const url = new URL(urlStr);
+        return url.searchParams.get(paramName) || '-';
+      } catch (e) {
+        try {
+          const search = urlStr.split('?')[1];
+          if (search) {
+            const params = new URLSearchParams(search);
+            return params.get(paramName) || '-';
+          }
+        } catch (innerErr) {}
+        return '-';
+      }
+    }
+
+    // ================= METHOD 1: PARALLEL GENERATE USING PROMISE.ALL =================
     async function handleBulkSubmit(e) {
       e.preventDefault();
 
-      const baseUrl = document.getElementById('bulk-baseUrl').value;
+      const rawBaseUrlsText = document.getElementById('bulk-baseUrls').value;
       const name = document.getElementById('bulk-name').value;
       const customMedium = document.getElementById('bulk-medium').value;
       const term = document.getElementById('bulk-term').value;
       const content = document.getElementById('bulk-content').value;
 
+      // Extract valid multiple URLs from Textarea with smart auto-protocol helper
+      const rawUrls = rawBaseUrlsText.split('\n');
+      const baseUrls = rawUrls.map(u => {
+        let trimmed = u.trim();
+        if (trimmed.length > 0 && !trimmed.startsWith('http://') && !trimmed.startsWith('https://')) {
+          trimmed = 'https://' + trimmed;
+        }
+        return trimmed;
+      }).filter(u => u.length > 0 && (u.startsWith('http://') || u.startsWith('https://')));
+
       const checkboxes = document.querySelectorAll('input[name="selected_platform"]:checked');
       const activePlatforms = Array.from(checkboxes).map(cb => cb.value);
 
-      if (!baseUrl) {
-        showToast('กรุณากรอก URL ปลายทางหลักเพื่อทำงานกลุ่ม');
+      if (baseUrls.length === 0) {
+        showToast('กรุณากรอก URL ปลายทางที่ถูกต้องอย่างน้อย 1 รายการ');
         return;
       }
 
@@ -610,44 +653,109 @@
       setIsGenerating(true);
       
       try {
-        const generatedItems = [];
-        for (const platKey of activePlatforms) {
-          const plat = PLATFORMS[platKey];
-          const finalUtm = buildUtmUrl(
-            baseUrl,
-            plat.source,
-            customMedium.trim() ? customMedium : plat.medium, 
-            name,
-            term,
-            content
-          );
+        const promises = [];
 
-          const short = await getShortLink(finalUtm);
+        baseUrls.forEach(url => {
+          activePlatforms.forEach(platKey => {
+            promises.push((async () => {
+              const plat = PLATFORMS[platKey];
+              const finalUtm = buildUtmUrl(
+                url,
+                plat.source,
+                customMedium.trim() ? customMedium : plat.medium, 
+                name,
+                term,
+                content
+              );
 
-          generatedItems.push({
-            id: (Date.now() + Math.random()).toString(),
-            date: new Date().toLocaleString('th-TH'),
-            baseUrl: baseUrl,
-            utmUrl: finalUtm,
-            shortUrl: short,
-            platform: platKey,
-            clicks: 0
+              const short = await getShortLink(finalUtm);
+
+              return {
+                id: (Date.now() + Math.random()).toString(),
+                date: new Date().toLocaleString('th-TH'),
+                baseUrl: url,
+                utmUrl: finalUtm,
+                shortUrl: short,
+                platform: platKey,
+                clicks: 0
+              };
+            })());
           });
-        }
+        });
+
+        const generatedItems = await Promise.all(promises);
 
         links = [...generatedItems, ...links];
         saveLinks(links);
-        showToast(`สร้างลิงก์กลุ่มและย่อยสำเร็จทั้งหมด ${generatedItems.length} ช่องทาง!`);
+        showToast(`สร้างลิงก์ UTM และลิงก์สั้นแบบคู่ขนานสำเร็จทั้งหมด ${generatedItems.length} รายการ!`);
       } catch (err) {
-        showToast('เกิดข้อผิดพลาดในการสร้างแบบกลุ่ม');
+        showToast('เกิดข้อผิดพลาดในการสร้าง UTM แบบคู่ขนาน');
+        console.error(err);
       } finally {
         setIsGenerating(false);
         resetBulkForm();
       }
     }
 
+    // ================= METHOD 1: PARALLEL SHORTEN USING PROMISE.ALL =================
+    async function handleBulkShortenSubmit(e) {
+      e.preventDefault();
+      const textarea = document.getElementById('bulk-shorten-urls');
+      const rawUrls = textarea.value.split('\n');
+      const urls = rawUrls.map(u => u.trim()).filter(u => u.length > 0);
+
+      if (urls.length === 0) {
+        showToast('กรุณากรอก URL อย่างน้อย 1 รายการ');
+        return;
+      }
+
+      // Smart auto-protocol parser helper
+      const validUrls = urls.map(u => {
+        let trimmed = u.trim();
+        if (trimmed.length > 0 && !trimmed.startsWith('http://') && !trimmed.startsWith('https://')) {
+          trimmed = 'https://' + trimmed;
+        }
+        return trimmed;
+      }).filter(u => u.length > 0 && (u.startsWith('http://') || u.startsWith('https://')));
+
+      if (validUrls.length === 0) {
+        showToast('ไม่พบ URL ที่ถูกต้อง (กรุณากรอกโดเมนที่ถูกต้อง)');
+        return;
+      }
+
+      setIsGenerating(true);
+      
+      try {
+        // Parallel Shortening Execution for Bulk URLs
+        const promises = validUrls.map(async (url) => {
+          const short = await getShortLink(url);
+          return {
+            id: (Date.now() + Math.random()).toString(),
+            date: new Date().toLocaleString('th-TH'),
+            baseUrl: url,
+            utmUrl: url, 
+            shortUrl: short,
+            platform: 'general',
+            clicks: 0
+          };
+        });
+
+        const generatedItems = await Promise.all(promises);
+
+        links = [...generatedItems, ...links];
+        saveLinks(links);
+        showToast(`ย่อลิงก์ทั่วไปแบบกลุ่มสำเร็จทั้งหมด ${generatedItems.length} รายการ!`);
+        textarea.value = '';
+      } catch (err) {
+        showToast('เกิดข้อผิดพลาดในการย่อลิงก์แบบกลุ่ม');
+        console.error(err);
+      } finally {
+        setIsGenerating(false);
+      }
+    }
+
     function resetBulkForm() {
-      document.getElementById('bulk-baseUrl').value = '';
+      document.getElementById('bulk-baseUrls').value = '';
       document.getElementById('bulk-name').value = '';
       document.getElementById('bulk-medium').value = '';
       document.getElementById('bulk-term').value = '';
@@ -659,22 +767,39 @@
 
     function setIsGenerating(loading) {
       isGenerating = loading;
-      const btn = document.getElementById('submit-bulk-btn');
+      const btnBulk = document.getElementById('submit-bulk-btn');
+      const btnShorten = document.getElementById('submit-bulk-shorten-btn');
       const spinner = document.getElementById('generating-spinner');
+      
       if (loading) {
-        btn.disabled = true;
-        btn.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-slate-400 cursor-not-allowed";
+        if (btnBulk) {
+          btnBulk.disabled = true;
+          btnBulk.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-slate-400 cursor-not-allowed";
+        }
+        if (btnShorten) {
+          btnShorten.disabled = true;
+          btnShorten.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-slate-400 cursor-not-allowed";
+        }
         spinner.classList.remove('hidden');
       } else {
-        btn.disabled = false;
-        btn.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950";
+        if (btnBulk) {
+          btnBulk.disabled = false;
+          btnBulk.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950";
+        }
+        if (btnShorten) {
+          btnShorten.disabled = false;
+          btnShorten.className = "w-full py-3 text-white font-bold rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2 bg-emerald-900 hover:bg-emerald-950";
+        }
         spinner.classList.add('hidden');
       }
     }
 
+    // Save and synchronise global links and local storage
     function saveLinks(newL) {
+      links = newL; // Explicit state synchronization
       localStorage.setItem('utm_links', JSON.stringify(newL));
       updateSidebarCounter();
+      renderHistoryTable();
     }
 
     function updateSidebarCounter() {
@@ -688,7 +813,7 @@
       tempInput.select();
       document.execCommand('copy');
       document.body.removeChild(tempInput);
-      showToast('คัดลอกรหัสเรียบร้อยแล้ว!');
+      showToast('คัดลอกเรียบร้อยแล้ว!');
     }
 
     function showToast(msg) {
@@ -725,61 +850,9 @@
     }
 
     function deleteLink(id) {
-      links = links.filter(l => l.id !== id);
-      saveLinks(links);
-      renderHistoryTable();
+      const updatedLinks = links.filter(l => l.id !== id);
+      saveLinks(updatedLinks);
       showToast('ลบลิงก์ที่เลือกแล้ว');
-    }
-
-    // Render dashboard data and progress elements
-    function updateDashboardData() {
-      const totalClicks = links.reduce((sum, l) => sum + l.clicks, 0);
-      const activePlatformsCount = Object.keys(PLATFORMS).filter(key => 
-        links.some(l => l.platform === key)
-      ).length;
-
-      const platformStats = Object.keys(PLATFORMS).reduce((acc, key) => {
-        acc[key] = {
-          count: links.filter(l => l.platform === key).length,
-          clicks: links.filter(l => l.platform === key).reduce((sum, l) => sum + l.clicks, 0)
-        };
-        return acc;
-      }, {});
-
-      const bestPlatformEntry = Object.entries(platformStats).sort((a,b) => b[1].clicks - a[1].clicks)[0];
-      const bestPlatformName = bestPlatformEntry && bestPlatformEntry[1].clicks > 0 
-        ? PLATFORMS[bestPlatformEntry[0]]?.name 
-        : '-';
-
-      document.getElementById('stat-total-links').innerText = `${links.length} ลิงก์`;
-      document.getElementById('stat-total-clicks').innerText = `${totalClicks.toLocaleString()} ครั้ง`;
-      document.getElementById('stat-best-platform').innerText = bestPlatformName;
-      document.getElementById('stat-active-platforms').innerText = `วัดผลจากแพลตฟอร์มที่เปิดใช้งาน ${activePlatformsCount} ช่องทาง`;
-
-      const barsContainer = document.getElementById('platform-progress-bars');
-      barsContainer.innerHTML = '';
-
-      Object.entries(PLATFORMS).forEach(([key, config]) => {
-        const stats = platformStats[key] || { count: 0, clicks: 0 };
-        const percentage = totalClicks > 0 ? (stats.clicks / totalClicks) * 100 : 0;
-
-        const row = document.createElement('div');
-        row.className = "flex items-center gap-4";
-        row.innerHTML = `
-          <div class="w-28 text-sm font-semibold flex items-center gap-2 ${config.textColor}">
-            <span class="w-3 h-3 rounded-full ${config.color}"></span>
-            ${config.name}
-          </div>
-          <div class="flex-1 bg-slate-100 h-3 rounded-full overflow-hidden">
-            <div class="h-full ${config.color} transition-all duration-500" style="width: ${percentage}%"></div>
-          </div>
-          <div class="w-24 text-right">
-            <div class="text-sm font-bold text-slate-800">${stats.clicks} คลิก</div>
-            <div class="text-xs text-slate-400">${stats.count} ลิงก์ที่ใช้งาน</div>
-          </div>
-        `;
-        barsContainer.appendChild(row);
-      });
     }
 
     function renderHistoryTable() {
@@ -791,7 +864,7 @@
       if (links.length === 0) {
         container.innerHTML = `
           <tr>
-            <td colSpan="6" class="py-12 text-center text-slate-400">ยังไม่พบคอนเทนต์ประวัติลิงก์ในประวัติการใช้งาน</td>
+            <td colSpan="10" class="py-12 text-center text-slate-400">ยังไม่พบคอนเทนต์ประวัติลิงก์ในประวัติการใช้งาน</td>
           </tr>
         `;
         return;
@@ -808,16 +881,28 @@
               ${plat.name}
             </span>
           </td>
-          <td class="py-4 px-4 space-y-1 max-w-[240px]">
+          <td class="py-4 px-4 text-xs font-medium text-slate-700 max-w-[120px] truncate" title="${getUtmParam(link.utmUrl, 'utm_campaign')}">
+            ${getUtmParam(link.utmUrl, 'utm_campaign')}
+          </td>
+          <td class="py-4 px-4 text-xs font-medium text-slate-700 max-w-[120px] truncate" title="${getUtmParam(link.utmUrl, 'utm_medium')}">
+            ${getUtmParam(link.utmUrl, 'utm_medium')}
+          </td>
+          <td class="py-4 px-4 text-xs font-mono text-slate-600 max-w-[120px] truncate" title="${getUtmParam(link.utmUrl, 'utm_term')}">
+            ${getUtmParam(link.utmUrl, 'utm_term')}
+          </td>
+          <td class="py-4 px-4 text-xs font-mono text-slate-600 max-w-[120px] truncate" title="${getUtmParam(link.utmUrl, 'utm_content')}">
+            ${getUtmParam(link.utmUrl, 'utm_content')}
+          </td>
+          <td class="py-4 px-4 space-y-1 max-w-[200px]">
             <p class="text-xs text-slate-400 truncate" title="${link.baseUrl}">${link.baseUrl}</p>
             <div class="flex items-center gap-1">
-              <span class="font-mono text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded truncate max-w-[180px]" title="${link.shortUrl}">${link.shortUrl}</span>
+              <span class="font-mono text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded truncate max-w-[140px]" title="${link.shortUrl}">${link.shortUrl}</span>
               <button onclick="copyText('${link.shortUrl}')" class="p-1 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded" title="คัดลอกลิงก์ย่อ">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
               </button>
             </div>
           </td>
-          <td class="py-4 px-4 max-w-[280px] text-xs font-mono text-slate-500 truncate" title="${link.utmUrl}">
+          <td class="py-4 px-4 max-w-[200px] text-xs font-mono text-slate-500 truncate" title="${link.utmUrl}">
             <div class="flex items-center gap-1">
               <span class="truncate">${link.utmUrl}</span>
               <button onclick="copyText('${link.utmUrl}')" class="p-1 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded flex-shrink-0" title="คัดลอก UTM แบบยาว">
@@ -825,7 +910,7 @@
               </button>
             </div>
           </td>
-          <td class="py-4 px-4 text-center font-bold text-slate-700">${link.clicks.toLocaleString()}</td>
+          <td class="py-4 px-4 text-center font-bold text-slate-700">${(link.clicks || 0).toLocaleString()}</td>
           <td class="py-4 px-4 text-center">
             <button onclick="deleteLink('${link.id}')" class="p-1.5 text-slate-400 hover:text-red-500 rounded transition hover:bg-red-50" title="ลบลิงก์นี้">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
@@ -838,22 +923,6 @@
 
     // Export CSV strictly formatted to user requirements
     function exportToCSV() {
-      const getUtmParam = (urlStr, paramName) => {
-        try {
-          const url = new URL(urlStr);
-          return url.searchParams.get(paramName) || '';
-        } catch (e) {
-          try {
-            const search = urlStr.split('?')[1];
-            if (search) {
-              const params = new URLSearchParams(search);
-              return params.get(paramName) || '';
-            }
-          } catch (innerErr) {}
-          return '';
-        }
-      };
-
       const headers = [
         'วันที่สร้าง', 
         'Platform', 
